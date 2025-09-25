@@ -1,0 +1,173 @@
+---
+title: 'Coverage'
+icon: "gauge"
+---
+
+## API
+
+### Repository Endpoints
+
+<AccordionGroup>
+  <Accordion title="GET /api/repo - Repository listing (3/6)">
+    - ✅ Basic connectivity test
+    - ✅ Response structure validation
+    - ✅ Database schema access validation
+    - ❌ Empty repository list handling
+    - ❌ Database error scenarios
+    - ❌ Response time performance testing
+  </Accordion>
+  <Accordion title="GET /api/repo/[slug] - Get specific repository (0/6)">
+    - ❌ Valid slug parameter handling
+    - ❌ Invalid slug parameter handling
+    - ❌ Repository not found scenarios
+    - ❌ Response schema validation
+    - ❌ Error response handling
+    - ❌ Database query performance
+  </Accordion>
+  <Accordion title="DELETE /api/repo/[slug] - Delete repository (0/6)">
+    - ❌ Valid repository deletion
+    - ❌ Non-existent repository deletion
+    - ❌ Cascade workflow deletion
+    - ❌ Response validation
+    - ❌ Error handling
+    - ❌ Database constraint violations
+  </Accordion>
+  <Accordion title="POST /api/repo/validate - Repository validation (3/7)">
+    - ✅ Valid request data validation
+    - ✅ Invalid request data validation (empty/missing repoUrl)
+    - ✅ Zod schema validation integration
+    - ❌ GitHub API integration testing
+    - ❌ GitHub API error scenarios (404, 403, 500)
+    - ❌ Network timeout handling
+    - ❌ Rate limiting scenarios
+  </Accordion>
+  <Accordion title="POST /api/repo/add - Add repository (0/8)">
+    - ❌ Valid repository addition
+    - ❌ GitHub API validation
+    - ❌ Duplicate repository handling
+    - ❌ Invalid GitHub URL handling
+    - ❌ GitHub API error scenarios (404, 403, 500)
+    - ❌ Request body validation
+    - ❌ Response schema validation
+    - ❌ GitHub API rate limiting
+  </Accordion>
+</AccordionGroup>
+
+### Workflow Endpoints
+
+<AccordionGroup>
+  <Accordion title="GET /api/workflow/[slug] - Get workflows (0/8)">
+    - ❌ Valid slug parameter handling
+    - ❌ Repository existence validation
+    - ❌ GitHub API workflow fetching
+    - ❌ Active workflow filtering
+    - ❌ Response schema validation
+    - ❌ Error handling (404, 403, 500)
+    - ❌ GitHub API integration
+    - ❌ Database workflow caching
+  </Accordion>
+  <Accordion title="GET /api/workflow/[slug]?date=YYYY-MM-DD - Get workflow runs (0/7)">
+    - ❌ Date parameter validation
+    - ❌ Workflow runs retrieval
+    - ❌ Date filtering logic
+    - ❌ Response aggregation
+    - ❌ Error handling
+    - ❌ GitHub API workflow runs fetching
+    - ❌ Performance with large datasets
+  </Accordion>
+  <Accordion title="GET /api/workflow/[slug]?date=YYYY-MM-DD&grouped=true - Get grouped runs (0/5)">
+    - ❌ Grouped parameter handling
+    - ❌ Grouped data aggregation
+    - ❌ Response structure validation
+    - ❌ Date parameter validation
+    - ❌ Grouping logic validation
+  </Accordion>
+  <Accordion title="GET /api/workflow/[slug]/exists - Check workflow existence (0/5)">
+    - ❌ Database workflow existence check
+    - ❌ Response format validation
+    - ❌ Error handling
+    - ❌ Database query performance
+    - ❌ Invalid slug handling
+  </Accordion>
+  <Accordion title="GET /api/workflow/[slug]/overview - Get daily metrics (0/6)">
+    - ❌ Metrics calculation
+    - ❌ Date parameter handling
+    - ❌ Overview data aggregation
+    - ❌ Response schema validation
+    - ❌ GitHub API integration
+    - ❌ Performance with large datasets
+  </Accordion>
+  <Accordion title="GET /api/workflow/[slug]/overview?date=YYYY-MM-DD - Get specific date metrics (0/5)">
+    - ❌ Specific date metrics
+    - ❌ Date validation
+    - ❌ Historical data handling
+    - ❌ Date parameter validation
+    - ❌ Metrics calculation accuracy
+  </Accordion>
+</AccordionGroup>
+
+## Cross-Cutting Concerns
+
+<AccordionGroup>
+  <Accordion title="Data Validation (1/7)">
+    - ✅ Basic Zod schema validation (repo/validate endpoint)
+    - ❌ Date parameter validation (YYYY-MM-DD format)
+    - ❌ Slug parameter validation
+    - ❌ Request body validation for POST endpoints
+    - ❌ Query parameter validation
+    - ❌ Response schema validation
+    - ❌ Input sanitization
+  </Accordion>
+  <Accordion title="Error Handling (1/8)">
+    - ✅ Basic error boundaries (404 responses)
+    - ❌ GitHub API rate limiting
+    - ❌ GitHub API authentication failures
+    - ❌ Invalid repository paths
+    - ❌ Network connectivity issues
+    - ❌ Database constraint violations
+    - ❌ Malformed request handling
+    - ❌ Boundary value testing
+  </Accordion>
+  <Accordion title="Performance & Integration (1/7)">
+    - ✅ Basic API response time monitoring
+    - ❌ GitHub API response time testing
+    - ❌ Database query performance
+    - ❌ Large dataset handling
+    - ❌ Concurrent request handling
+    - ❌ Memory usage testing
+    - ❌ Timeout handling
+  </Accordion>
+  <Accordion title="Functional Workflows (0/8)">
+    - ❌ End-to-end repository management workflow
+    - ❌ Workflow data synchronization
+    - ❌ Cross-endpoint data consistency
+    - ❌ Complete user workflows
+    - ❌ Business logic validation
+    - ❌ Advanced GitHub API integration testing
+    - ❌ Advanced database integration testing
+    - ❌ Full request/response cycle testing
+  </Accordion>
+</AccordionGroup>
+
+## Infrastructure & System Health
+
+<AccordionGroup>
+  <Accordion title="Server Health (1/1)">
+    - ✅ Basic server connectivity and response validation
+  </Accordion>
+  <Accordion title="Environment Variables (1/1)">
+    - ✅ Required environment variables validation
+  </Accordion>
+  <Accordion title="Database Connection (1/1)">
+    - ✅ Database connectivity and schema validation
+  </Accordion>
+  <Accordion title="GitHub API (1/1)">
+    - ✅ GitHub token validation and API connectivity
+  </Accordion>
+  <Accordion title="External Dependencies (1/1)">
+    - ✅ GitHub API accessibility testing
+  </Accordion>
+  <Accordion title="Slug Generation (1/1)">
+    - ✅ URL slug generation logic testing
+  </Accordion>
+</AccordionGroup>

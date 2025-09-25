@@ -1,0 +1,48 @@
+---
+title: 'Architecture'
+icon: 'mountains'
+---
+
+## Overview
+
+OmniLens uses a modular testing architecture that separates concerns and promotes reusability across test suites.
+The testing framework is built around three core components:
+
+- **Shared utilities** (`test-utils.js`) provide common functionality and configuration
+- **Test data & cases** (`test-cases.js`) centralize test scenarios and validation data  
+- **Test suites** (like `health.test.js`) implement specific testing workflows
+
+## Core Components
+
+### `test-utils.js`
+The foundation of our testing framework, providing shared utilities and configuration:
+
+- **Common configuration** - Centralized URLs, test data, and environment settings
+- **Color-coded logging** - Enhanced console output with color coding for better test debugging
+- **HTTP request utilities** - Standardized HTTP client with error handling and retry logic
+- **Server health checks** - Infrastructure validation functions for service availability
+- **Test case re-exports** - Direct access to predefined test scenarios from test-cases.js
+
+This utility module ensures all test suites have consistent access to common functionality and configuration.
+
+### `test-cases.js`
+Centralized repository for test data and validation scenarios:
+
+- **Zod validation test cases** - Comprehensive schema validation scenarios for API endpoints
+- **Slug generation test cases** - URL slug creation and validation test data
+- **Test data fixtures** - Reusable data sets for consistent testing across suites
+
+This module promotes test data consistency and reduces duplication across different test files.
+
+### `health.test.js`
+Comprehensive health and infrastructure validation suite:
+
+- **Server health check** - Validates core service availability and response times
+- **Environment variables validation** - Ensures all required configuration is present
+- **Database connectivity testing** - Verifies database connections and query performance
+- **GitHub API connectivity** - Tests external API access and token validation
+- **Core API endpoints health** - Validates all critical API endpoints are functional
+- **Zod validation integration** - Tests schema validation across the application
+- **Slug generation testing** - Validates URL slug creation and uniqueness
+
+This test suite serves as the primary health check for the entire OmniLens infrastructure.

@@ -1,0 +1,26 @@
+---
+title: 'Process'
+icon: 'vial-circle-check'
+---
+
+## Local Testing
+
+OmniLens has commands to make it easy to run specific test suites:
+```bash
+bun run test:health
+```
+
+You can also run the tests directly:
+```bash
+bun tests/health.test.js
+```
+
+## GitHub Actions
+
+OmniLens has GitHub Actions configured to run our test suites:
+
+- When a pull request is opened
+- On every push to a pull request
+- When code is merged to main
+
+You can also trigger these workflows manually via their Workflow Dispatch options and have them run on a specified branch.

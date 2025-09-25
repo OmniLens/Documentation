@@ -1,0 +1,70 @@
+---
+title: 'Self Host'
+icon: 'server'
+---
+
+<Info>
+  **Prerequisites**:
+  - Bun
+  - Node.js `version 18` or later
+  - npm `version 10` or later
+  - PostgreSQL `version 17`
+</Info>
+
+<Steps>
+<Step title="Create Environment File">
+```bash
+cp .env.example .env.local
+```
+</Step>
+
+<Step title="Configure Authentication Config">
+Generate a GitHub PAT and add it to `.env.local`:
+```bash
+# Personal Access Token
+GITHUB_TOKEN=
+```
+</Step>
+
+<Step title="Configure Database Config">
+Generate a secure password:
+```bash
+openssl rand -base64 32
+```
+Add it to `.env.local`:
+```bash
+# Database config
+DB_PASSWORD=
+```
+</Step>
+
+<Step title="Install Dependencies">
+```bash
+bun install
+```
+</Step>
+
+<Step title="Ensure PostgreSQL is running">
+```bash
+pg_isready
+```
+
+The following response should be returned:
+```bash
+/tmp:5432 - accepting connections
+```
+</Step>
+<Step title="Setup Database">
+```bash
+bun run setup
+```
+</Step>
+
+<Step title="Start Development Server">
+```bash
+bun run dev
+```
+
+View your local preview at `http://localhost:3000`.
+</Step>
+</Steps>
